@@ -4,15 +4,16 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import style from "./Header.module.css";
 
-export default function SimpleMenu() {
+export default function SimpleMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
     setAnchorEl(null);
+    props.changeCategorie(e.target.id);
   };
 
   return (
@@ -29,9 +30,9 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Horrors</MenuItem>
-        <MenuItem onClick={handleClose}>Drama</MenuItem>
-        <MenuItem onClick={handleClose}>Comedian</MenuItem>
+        <MenuItem id={"Movies"} onClick={handleClose}>Movies</MenuItem>
+        <MenuItem id={"TVSeries"} onClick={handleClose}>TVSeries</MenuItem>
+        
       </Menu>
     </div>
   );

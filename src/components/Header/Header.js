@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from "@material-ui/core/AppBar";
-import Menu from "./Menu";
+import MenuContainer from "./MenuContainer";
 import style from "./Header.module.css";
 import SearchBox from './SearchBox';
 
@@ -16,7 +16,7 @@ function Header() {
                     <SearchBox/>
                 </div>
                 <div>
-                    <Menu className={style.menu}/>
+                    <MenuContainer/>
                 </div>
                 </div>
             </AppBar>

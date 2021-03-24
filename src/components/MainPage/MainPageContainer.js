@@ -1,14 +1,13 @@
 import React from 'react';
 //import { connect } from 'react-redux';
 //import { compose } from 'redux';
-import { getTop } from '../../API/API';
+import { getTop, getSeries } from '../../API/API';
 import MainPage from './MainPage';
 import style from "./MainPage.module.css";
-import {setIdActionCreator} from "../../Redux/FilmCardReducer";
 import {connect} from "react-redux";
 
 class MainPageContainer extends React.Component {
-    constructor(){
+    constructor(props){
         super();
         this.state = {
             filmsList: []
@@ -16,38 +15,37 @@ class MainPageContainer extends React.Component {
     }
 
     componentDidMount(){
-        getTop().then(data => {
-            if (data.length > 0){
-                this.setState({ 
-                    filmsList: data
-                 });
-            }
-        }).catch(error => {
-            console.log(error, "error");
-        });    
+        getTop().then(data => this.setState({filmsList: data}));
     }
-        
+    componentDidUpdate(prevProps){
+                
+    /*switch(this.props.categories){
+                    case "Movies":
+                        console.log("switch to MOVIES");
+                        getTop().then(data => this.setState({filmsList: data}));
+                        break;
+                    case "TVSeries":
+                        console.log("switch to SERIES");
+                        getSeries().then(data => this.setState({filmsList: data}));
+                        break;    
+                } */
+        }
+    
+
     render() {
         return <div className={style.mainPage}>
             <MainPage films={this.state.filmsList}
-                      setId={this.props.setId}  
+                       
             />
+            {this.props.categories}
         </div>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        status: "i work"
+        categories: state.filmList.categorie
     }
 } 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setId: (id) => {
-            dispatch(setIdActionCreator(id))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPageContainer);
+export default connect(mapStateToProps)(MainPageContainer);
