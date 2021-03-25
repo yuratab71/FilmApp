@@ -1,6 +1,4 @@
 import React from 'react';
-//import { connect } from 'react-redux';
-//import { compose } from 'redux';
 import { getTop, getSeries } from '../../API/API';
 import MainPage from './MainPage';
 import style from "./MainPage.module.css";
@@ -13,38 +11,36 @@ class MainPageContainer extends React.Component {
             filmsList: []
         }
     }
-
     componentDidMount(){
         getTop().then(data => this.setState({filmsList: data}));
     }
     componentDidUpdate(prevProps){
-                
-    /*switch(this.props.categories){
-                    case "Movies":
-                        console.log("switch to MOVIES");
-                        getTop().then(data => this.setState({filmsList: data}));
-                        break;
-                    case "TVSeries":
-                        console.log("switch to SERIES");
-                        getSeries().then(data => this.setState({filmsList: data}));
-                        break;    
-                } */
+       //console.log(prevProps.categories, this.props.categories);         
+    if (prevProps.categories !== this.props.categories){
+        switch(this.props.categories){
+            case "Movies":
+                getTop().then(data => this.setState({filmsList: data}));
+                break;
+            case "TVSeries":
+                getSeries().then(data => this.setState({filmsList: data}));
+                break;    
+        }
+    }
+    
+       
         }
     
 
     render() {
         return <div className={style.mainPage}>
-            <MainPage films={this.state.filmsList}
-                       
-            />
-            {this.props.categories}
+            <MainPage films={this.state.filmsList}/>
         </div>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.filmList.categorie
+        categories: state.filmList.categorie,
     }
 } 
 

@@ -3,6 +3,7 @@ import style from "./MainPage.module.css";
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import {  Link } from 'react-router-dom';
+import NoInternet from "../NoInternet/NoInternet";
 
 function MainPage(props) {    
     const [films, setFilms] = useState([]);
@@ -35,7 +36,8 @@ function MainPage(props) {
     }
 
     return (<>
-        { films ? <div className={style.filmList}>  
+        {films.length === 0 ? <NoInternet/>
+         : <div className={style.filmList}>  
                 {currentList.map(el => {
                     return <div className={style.filmCard} key={el.id}>
                         <h2>{el.title}</h2>
@@ -55,8 +57,8 @@ function MainPage(props) {
                         <Pagination onChange={onPageChange} count={25} color="primary" />
                     </div>
                 </div>
-        </div>
-        : <p>Something going wrong</p>}
+        </div>}
+        
         
         </>
     )

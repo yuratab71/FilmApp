@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const BASE_URL = "https://imdb-api.com/en/API/";
 const API_KEY = "k_bu6o9atl/";
-const SEARCH = "SearchMovie/";
+const SEARCH = "SearchTitle/";
 const TOP_250 = "Top250Movies/";
 const TOP_250TVs = "Top250TVs/"
 const TITLE = "Title/";
@@ -17,7 +17,7 @@ const instance = axios.create({
 });
 
 const getSearch = (expression) => {
-    return instance.get(`${SEARCH}${API_KEY}${expression}`).then(responce => responce.data.items);
+    return instance.get(`${SEARCH}${API_KEY}${expression}`).then(responce => responce.data.results);
 }
 
 const getTop = () => {
@@ -33,4 +33,5 @@ const getTitle = (id) => {
 }
 
 export {getTop, getSearch, getTitle, getSeries};
+
 

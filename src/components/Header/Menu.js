@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import style from "./Header.module.css";
+import {Link} from "react-router-dom";
 
 export default function SimpleMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,6 +15,7 @@ export default function SimpleMenu(props) {
   const handleClose = (e) => {
     setAnchorEl(null);
     props.changeCategorie(e.target.id);
+    
   };
 
   return (
@@ -30,8 +32,8 @@ export default function SimpleMenu(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem id={"Movies"} onClick={handleClose}>Movies</MenuItem>
-        <MenuItem id={"TVSeries"} onClick={handleClose}>TVSeries</MenuItem>
+        <Link to="/"><MenuItem id={"Movies"} onClick={handleClose}>Movies</MenuItem></Link>
+        <Link to="/"><MenuItem id={"TVSeries"} onClick={handleClose}>TVSeries</MenuItem></Link>
         
       </Menu>
     </div>

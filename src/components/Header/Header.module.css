@@ -1,25 +1,26 @@
 .header_container {
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .header_button > button > span {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
 
 .header_button {
-    border: 1px solid white;
-    border-radius: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
 .header_button:hover {
-    background-color: darkblue;
-    transition: 700ms;
+  background-color: darkblue;
+  transition: 700ms;
 }
 
-
-
-
+.searchField {
+  display: flex;
+  align-items: center;
+}

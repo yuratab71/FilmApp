@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import style from "./FilmCard.module.css";
-
 function FilmCard(props) {
     useEffect(() => {
     }, [props])
     
+    const history = useHistory();
+
+    function GoBack(){
+        history.goBack();
+    }
+
     return (
         <div>
-            <Link to="/">Go Back</Link>
+            <Link onClick={GoBack}>Go Back</Link>
             <h2>{props.filmData.title}</h2>
             <div className={style.film_container}>
                 <div>
