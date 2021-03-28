@@ -3,3 +3,7 @@
   margin: 10px auto;
 }
 
+.appContainer {
+  display: flex;
+  justify-content: space-between;
+}

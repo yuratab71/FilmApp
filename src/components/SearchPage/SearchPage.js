@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react';
 import style from "./SearchPage.module.css";
 import {Link} from "react-router-dom";
 import Preloader from "../common/Preloader";
@@ -11,7 +11,7 @@ function SearchPage(props) {
                 return <div key={el.id} className={style.searchCard}>
                     <div>
                         
-                        <img className={style.search_image} src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg" />
+                        <img alt="film-poster" className={style.search_image} src={el.image} />
                     </div>
                     <div>
                         <h2>{el.title}</h2>

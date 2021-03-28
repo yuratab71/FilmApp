@@ -3,7 +3,7 @@ import style from "./MainPage.module.css";
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import {  Link } from 'react-router-dom';
-import NoInternet from "../NoInternet/NoInternet";
+import Preloader from "../common/Preloader";
 
 function MainPage(props) {    
     const [films, setFilms] = useState([]);
@@ -35,8 +35,17 @@ function MainPage(props) {
         setCurrentPage((value)*5 - 5);
     }
 
+    const saveToLocalStorage = (e) => {
+        console.log("save work");
+        localStorage.setItem(e.target.id, e.target.title);
+    }
+
+    const deleteFromLocalStorage = (e) => {
+        localStorage.removeItem(e.target.id);
+    }
+
     return (<>
-        {films.length === 0 ? <NoInternet/>
+        {films.length === 0 ? <Preloader/>
          : <div className={style.filmList}>  
                 {currentList.map(el => {
                     return <div className={style.filmCard} key={el.id}>
@@ -48,6 +57,11 @@ function MainPage(props) {
                                 <p>rank: {el.rank}</p>
                                 <p>actors: {el.crew}</p>
                                 <p>IMDb raiting: {el.imDbRating}</p>
+                                {
+                                    localStorage.hasOwnProperty(el.id)
+                                        ? <button id={el.id} onClick={deleteFromLocalStorage}>delete</button>
+                                       : <button id={el.id} title={el.fullTitle} onClick={saveToLocalStorage}>save</button>
+                }
                             </div>
                         </div>
                     </div>

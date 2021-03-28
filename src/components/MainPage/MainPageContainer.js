@@ -12,7 +12,16 @@ class MainPageContainer extends React.Component {
         }
     }
     componentDidMount(){
-        getTop().then(data => this.setState({filmsList: data}));
+        switch(this.props.categories){
+            case "Movies":
+                getTop().then(data => this.setState({filmsList: data}));
+                break;
+            case "TVSeries":
+                getSeries().then(data => this.setState({filmsList: data}));
+                break;    
+                default:
+                    break;
+        }
     }
     componentDidUpdate(prevProps){
        //console.log(prevProps.categories, this.props.categories);         
@@ -24,6 +33,8 @@ class MainPageContainer extends React.Component {
             case "TVSeries":
                 getSeries().then(data => this.setState({filmsList: data}));
                 break;    
+                default:
+                    break;
         }
     }
     
