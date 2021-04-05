@@ -1,0 +1,18 @@
+.filmCard {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 25px;
+  max-width: 600px;
+  height: 400px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+.filmSidebar {
+  display: flex;
+}
+
+.filmPoster {
+  width: 200px;
+  object-fit: contain;
+}

@@ -6,7 +6,7 @@ import SearchBoxContainer from "./SearchBox/SearchBox";
 
 function Header(props) {
     return (     
-            <AppBar style={{position: "relative"}}>
+            <AppBar className={style.header} style={{position: "relative"}}>
                 <div className={style.header_container}>
                 <div className={style.logo}>
                     <h1>Movies</h1>

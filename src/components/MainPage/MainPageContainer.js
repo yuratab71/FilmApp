@@ -3,6 +3,7 @@ import { getTop, getSeries } from '../../API/API';
 import MainPage from './MainPage';
 import style from "./MainPage.module.css";
 import {connect} from "react-redux";
+import { localStorageAC } from '../../Redux/LocalStorageReducer';
 
 class MainPageContainer extends React.Component {
     constructor(props){
@@ -54,5 +55,7 @@ const mapStateToProps = (state) => {
         categories: state.filmList.categorie,
     }
 } 
+
+
 
 export default connect(mapStateToProps)(MainPageContainer);
