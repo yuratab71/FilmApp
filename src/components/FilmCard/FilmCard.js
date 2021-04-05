@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import style from "./FilmCard.module.css";
+import ReactPlayer from "react-player";
+
 function FilmCard(props) {
-    useEffect(() => {
-    }, [props])
     
     const history = useHistory();
 
@@ -22,9 +22,12 @@ function FilmCard(props) {
                 <div>
                     <p>{props.filmData.fullTitle}</p>
                     <p>{props.filmData.awards}</p>
-                    <p></p>
                 </div>
             </div>
+            <div>
+                <ReactPlayer url={props.videoData.videoUrl}/>
+            </div>
+
         </div>
     )
 }

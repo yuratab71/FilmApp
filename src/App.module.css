@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 .container {
   width: 90%;
   margin: 10px auto;
@@ -6,4 +8,8 @@
 .appContainer {
   display: flex;
   justify-content: space-between;
+}
+
+.app {
+  font-style: "Roboto", sans-serif;
 }

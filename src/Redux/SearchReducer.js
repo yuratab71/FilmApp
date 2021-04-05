@@ -11,7 +11,6 @@ const SearchReducer = (state = initialState, action) => {
                 ...state,
                 searchExpression: action.expression
             }
-            break;
         default:
             return state;    
     }

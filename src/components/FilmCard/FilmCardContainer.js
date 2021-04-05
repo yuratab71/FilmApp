@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import FilmCard from './FilmCard';
-import {getTitle} from "../../API/API";
-import {connect} from "react-redux";
-import {localStorageAC} from "../../Redux/LocalStorageReducer";
+import {getTitle, getTrailer} from "../../API/API";
 
 class FilmCardContainer extends Component {
     constructor() {
         super();
         this.state = {
-            filmData: {}
+            filmData: {},
+            videoData: {}
         }
     }
     
@@ -21,24 +20,25 @@ class FilmCardContainer extends Component {
             }
         ).catch(error => {
             console.log(error, "error");
-        });   
+        });
+        getTrailer(this.props.location.pathname.split("/")[2]).then(
+            data => {
+                this.setState({
+                    videoData: {
+                        videoId: data.data.videoId,
+                        videoUrl: data.data.videoUrl
+                    }
+                })
+            }
+        )   
     }
     
     render() {
         return <FilmCard id={this.props.id}
                          filmData={this.state.filmData}
                          save={this.props.addToLocal}
+                         videoData={this.state.videoData}
         />
-    }
-}
-
-const mapStateToProps = (state) => {
-
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addToLocal: (e) => dispatch(localStorageAC(e))
     }
 }
 

@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import {localStorageAC, localDeleteAC} from "../../Redux/LocalStorageReducer";
 
 function LittleFilmCard(props) {
-    
     const saveFilm = (e) => {
         props.save({
             id: e.target.id,
@@ -21,12 +20,11 @@ function LittleFilmCard(props) {
         <div className={style.filmCard} key={props.id}>
                         <h2>{props.title}</h2>
                         <div className={style.filmSidebar}>
-                            <img src={props.image} className={style.filmPoster}/>
+                            <img src={props.image} alt="film poster" className={style.filmPoster}/>
                             <div className={style.filmInfo}>
                                 <Link id={props.id} to={`film/${props.id}`}>{props.fullTitle}</Link>
                                 <p>rank: {props.rank}</p>
                                 <p>actors: {props.crew}</p>
-                                <p>IMDb raiting: {props.imDbRating}</p>
                                 {
                                     props.ids.includes(props.id) 
                                     ? <button id={props.id} onClick={deleteFilm}>Delete</button>

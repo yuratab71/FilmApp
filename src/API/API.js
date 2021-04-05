@@ -6,7 +6,7 @@ const SEARCH = "SearchTitle/";
 const TOP_250 = "Top250Movies/";
 const TOP_250TVs = "Top250TVs/"
 const TITLE = "Title/";
-
+const TRAILER = "YouTubeTrailer/"
 
 const instance = axios.create({
     //withCredentials: true,
@@ -29,9 +29,13 @@ const getSeries = () => {
 }
 
 const getTitle = (id) => {
-    return instance.get(`${TITLE}${API_KEY}${id}`)
+    return instance.get(`${TITLE}${API_KEY}${id}`);
 }
 
-export {getTop, getSearch, getTitle, getSeries};
+const getTrailer = (id) => {
+    return instance.get(`${TRAILER}${API_KEY}${id}`);
+}
+
+export {getTop, getSearch, getTitle, getSeries, getTrailer};
 
 

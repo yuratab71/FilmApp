@@ -1,8 +1,5 @@
 const SET_GENRE = "SET_GENRE";
 const MOVIES = "Movies";
-const TVSeries = "TVSeries";
-
-
 
 let initialState = {
     categorie: MOVIES

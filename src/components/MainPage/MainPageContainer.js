@@ -3,7 +3,6 @@ import { getTop, getSeries } from '../../API/API';
 import MainPage from './MainPage';
 import style from "./MainPage.module.css";
 import {connect} from "react-redux";
-import { localStorageAC } from '../../Redux/LocalStorageReducer';
 
 class MainPageContainer extends React.Component {
     constructor(props){
@@ -37,12 +36,8 @@ class MainPageContainer extends React.Component {
                 default:
                     break;
         }
-    }
+    }}
     
-       
-        }
-    
-
     render() {
         return <div className={style.mainPage}>
             <MainPage films={this.state.filmsList}/>

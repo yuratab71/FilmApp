@@ -9,13 +9,13 @@ const initialState = {
 
 const removeLocals = (id, arr) => {
     return arr.filter(e => {
-        return e.id != id;
+        return e.id !== id;
     })
 }
 
 const removeIds = (id, ids) => {
     return ids.filter(e => {
-        return e != id;
+        return e !== id;
     });
 }
 
@@ -32,7 +32,6 @@ const LocalStorageReducer = (state = initialState, action) => {
                 }
             }
             return state;
-            break;
         case REMOVE_FROM_LOCAL:   
             localStorage.removeItem(action.id);    
         return {
@@ -40,7 +39,6 @@ const LocalStorageReducer = (state = initialState, action) => {
                 locals: removeLocals(action.id, state.locals),
                 ids: removeIds(action.id, state.ids)
             }
-            break;
         case SET_TO_DEFAULT:
             return {
                 ...state,
