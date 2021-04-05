@@ -5,8 +5,8 @@ import style from "./Header.module.css";
 import SearchBoxContainer from "./SearchBox/SearchBox";
 
 function Header(props) {
-    return (     
-            <AppBar className={style.header} style={{position: "relative"}}>
+    return (       
+            <AppBar position="sticky">
                 <div className={style.header_container}>
                 <div className={style.logo}>
                     <h1>Movies</h1>

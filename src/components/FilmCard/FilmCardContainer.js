@@ -32,6 +32,29 @@ class FilmCardContainer extends Component {
             }
         )   
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname.split("/")[2] !== this.props.location.pathname.split("/")[2]){
+            getTitle(this.props.location.pathname.split("/")[2]).then(
+                data => {
+                    this.setState({
+                        filmData: data.data 
+                    })
+                }
+            ).catch(error => {
+                console.log(error, "error");
+            });
+            getTrailer(this.props.location.pathname.split("/")[2]).then(
+                data => {
+                    this.setState({
+                        videoData: {
+                            videoId: data.data.videoId,
+                            videoUrl: data.data.videoUrl
+                        }
+                    })
+                }
+            )   
+        }
+    }
     
     render() {
         return <FilmCard id={this.props.id}

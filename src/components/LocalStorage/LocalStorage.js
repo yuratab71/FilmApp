@@ -25,7 +25,7 @@ function LocalStorage(props) {
            ? <p>add something</p>
             : props.films.map(item => {
                    return <div className={style.localCard}>
-                       <Link id={item.id} to={`film/${item.id}`}>{item.title}</Link>
+                       <Link id={item.id} to={{pathname: `/film/${item.id}`}}>{item.title}</Link>
                    </div>
                })
            }

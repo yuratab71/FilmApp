@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import style from "./FilmCard.module.css";
 import ReactPlayer from "react-player";
@@ -11,8 +11,10 @@ function FilmCard(props) {
         history.goBack();
     }
 
+    console.log(props.filmData.awards);
+
     return (
-        <div>
+        <div className={style.film_card}>
             <Link onClick={GoBack}>Go Back</Link>
             <h2>{props.filmData.title}</h2>
             <div className={style.film_container}>
@@ -20,8 +22,9 @@ function FilmCard(props) {
                     <img className={style.film_image} src={props.filmData.image} />
                 </div>
                 <div>
-                    <p>{props.filmData.fullTitle}</p>
-                    <p>{props.filmData.awards}</p>
+                    <div className={style.film_text}>{props.filmData.fullTitle}</div>
+                    <div className={style.film_text}>{props.filmData.awards ? props.filmData.awards.split('|')[0] : ""}</div>
+                    <div className={style.film_text}>{props.filmData.awards ? props.filmData.awards.split('|')[1] : ""}</div>
                 </div>
             </div>
             <div>
